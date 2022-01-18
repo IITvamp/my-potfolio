@@ -23,11 +23,16 @@ const useStyles = makeStyles({
 const Footer = () => {
   const classes = useStyles();
 
+  const openURL = (url) => {
+    const newWindow = window.open(url, "_blank", "noopener,noreferrer");
+    if (newWindow) newWindow.opener = null;
+  };
+
   return (
     <BottomNavigation className={classes.bottomNavContainer}>
-      <BottomNavigationAction icon={<LinkedIn />} className={classes.root} />
-      <BottomNavigationAction icon={<Twitter />} className={classes.root} />
-      <BottomNavigationAction icon={<GitHub />} className={classes.root} />
+      <BottomNavigationAction icon={<LinkedIn />} className={classes.root} onClick={()=>{openURL("https://www.linkedin.com/in/ayush-bansal-865328206/")} }/>
+      <BottomNavigationAction icon={<Twitter />} className={classes.root} onClick={() => {openURL("https://twitter.com/ASBansal3") }}/>
+      <BottomNavigationAction icon={<GitHub />} className={classes.root} onClick={() => {openURL("https://github.com/IITvamp") }}/>
     </BottomNavigation>
   );
 };

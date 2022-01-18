@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import { makeStyles, withStyles } from "@material-ui/core/styles";
 import Box from "@material-ui/core/Box";
 import TextField from "@material-ui/core/TextField";
@@ -62,42 +62,42 @@ const InputField = withStyles({
 })(TextField);
 
 const Contact = () => {
+  const [message, setMessage] = useState("");
   const classes = useStyles();
+
+  const whatsappHandler = () => {
+    if (!message.isEmpty) {
+      window.location.href = `https://wa.me/${919811688728}/?text=${encodeURIComponent(
+        message
+      )}`;
+    }
+  }
+
   return (
     <Box component="div" className={classes.contactContainer}>
       <Grid container justify="center">
         <Box component="form" className={classes.form}>
           <Typography variant="h5" className={classes.heading}>
-            Connect with me...
+            Connect with me On Whatsapp
           </Typography>
           <InputField
             fullWidth={true}
-            label="Name"
+            label="Your Message"
             variant="outlined"
-            inputProps={{ className: classes.input }}
-          />
-          <InputField
-            fullWidth={true}
-            label="Email"
-            variant="outlined"
-            inputProps={{ className: classes.input }}
-            className={classes.field}
-          />
-          <InputField
-            fullWidth={true}
-            label="Message"
-            variant="outlined"
+            value={message}
             multiline
             rows={4}
             inputProps={{ className: classes.input }}
+            onChange={e=>{setMessage(e.target.value)}}
           />
           <Button
             variant="outlined"
             fullWidth={true}
             endIcon={<Send />}
             className={classes.button}
+            onClick={whatsappHandler}
           >
-            Contact Me
+            WhatsApp Me
           </Button>
         </Box>
       </Grid>

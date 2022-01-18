@@ -80,6 +80,12 @@ const projects = [
 ];
 
 const Portfolio = () => {
+
+  const openURL = (url) => {
+    const newWindow = window.open(url, "_blank", "noopener,noreferrer");
+    if (newWindow) newWindow.opener = null;
+  };
+
   const classes = useStyles();
   return (
     <Box component="div" className={classes.mainContainer}>
@@ -105,10 +111,14 @@ const Portfolio = () => {
                 </CardContent>
               </CardActionArea>
               <CardActions>
-                <Button size="small" color="primary">
-                  Share
+                <Button size="small" color="primary" onClick={openURL("/")}>
+                  Code
                 </Button>
-                <Button size="small" color="primary">
+                <Button
+                  size="small"
+                  color="primary"
+                  onClick={openURL("/")}
+                >
                   Live Demo
                 </Button>
               </CardActions>
