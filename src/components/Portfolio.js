@@ -10,12 +10,10 @@ import CardMedia from "@material-ui/core/CardMedia";
 import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
 
-import project1 from "../images/html-css-javascript-lg.jpg";
-import project2 from "../images/html-css-javascript.jpg";
-import project3 from "../images/javascript-fullstack.jpg";
-import project4 from "../images/mern-stack.jpg";
-import project5 from "../images/react-redux.jpg";
-import project6 from "../images/react.png";
+import project1 from "../images/portfolioPic.png";
+import project2 from "../images/Project2.png";
+import project3 from "../images/Project3.png";
+
 
 const useStyles = makeStyles((theme) => ({
   mainContainer: {
@@ -30,67 +28,40 @@ const useStyles = makeStyles((theme) => ({
 
 const projects = [
   {
-    name: "Project 1",
-    description: `Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quis
-    consequatur magni quod nesciunt necessitatibus molestiae non
-    eligendi, magnam est aliquam recusandae? Magnam soluta minus
-    iste alias sunt veritatis nisi dolores!`,
+    name: "My Portfolio",
+    description: `My portfolio website with a simple ui revealing my projects, work experience, and a lot more about me. Also integrated a contact form where you can write your message for me and can send it to me on whatsapp by simply pressing the send button on contact form itself.`,
     image: project1,
+    codeURL: "https://github.com/IITvamp/my-potfolio",
+    LiveDemoURL: "https://my-potfolio-tau.vercel.app/",
   },
   {
-    name: "Project 2",
-    description: `Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quis\
-    consequatur magni quod nesciunt necessitatibus molestiae non\
-    eligendi, magnam est aliquam recusandae? Magnam soluta minus\
-    iste alias sunt veritatis nisi dolores!`,
+    name: "NewsShorts",
+    description: `NewsShorts, Inshorts clone with features like user login and signup using JWT, nested comment system, create, delete, update posts functionality, create and update comments functionality, user Profile page, loading page and many more to come.`,
     image: project2,
+    codeURL: "https://github.com/IITvamp/my-social-media-app",
+    LiveDemoURL: "https://newsshorts.vercel.app/",
   },
   {
-    name: "Project 3",
-    description: `Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quis\
-    consequatur magni quod nesciunt necessitatibus molestiae non\
-    eligendi, magnam est aliquam recusandae? Magnam soluta minus\
-    iste alias sunt veritatis nisi dolores!`,
+    name: "Scrum Board",
+    description: `A simple scrum board application where you can categorise your tasks in various different lists according to your needs. you can perform crud(create, read, update and delete) operation on lists as well as the tasks inside the lists.`,
     image: project3,
-  },
-  {
-    name: "Project 4",
-    description: `Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quis\
-    consequatur magni quod nesciunt necessitatibus molestiae non\
-    eligendi, magnam est aliquam recusandae? Magnam soluta minus\
-    iste alias sunt veritatis nisi dolores!`,
-    image: project4,
-  },
-  {
-    name: "Project 5",
-    description: `Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quis\
-    consequatur magni quod nesciunt necessitatibus molestiae non\
-    eligendi, magnam est aliquam recusandae? Magnam soluta minus\
-    iste alias sunt veritatis nisi dolores!`,
-    image: project5,
-  },
-  {
-    name: "Project 6",
-    description: `Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quis\
-    consequatur magni quod nesciunt necessitatibus molestiae non\
-    eligendi, magnam est aliquam recusandae? Magnam soluta minus\
-    iste alias sunt veritatis nisi dolores!`,
-    image: project6,
+    codeURL: "https://github.com/IITvamp/scrum-board-frontend",
+    LiveDemoURL: "https://scrum-board-frontend.vercel.app/",
   },
 ];
 
 const Portfolio = () => {
+
+  const classes = useStyles();
 
   const openURL = (url) => {
     const newWindow = window.open(url, "_blank", "noopener,noreferrer");
     if (newWindow) newWindow.opener = null;
   };
 
-  const classes = useStyles();
   return (
     <Box component="div" className={classes.mainContainer}>
       <Grid container justify="center">
-        {/* Projects */}
         {projects.map((project, i) => (
           <Grid item xs={12} sm={8} md={4} key={i}>
             <Card className={classes.cardContainer}>
@@ -111,13 +82,17 @@ const Portfolio = () => {
                 </CardContent>
               </CardActionArea>
               <CardActions>
-                <Button size="small" color="primary" onClick={openURL("/")}>
+                <Button
+                  size="small"
+                  color="primary"
+                  onClick={() => openURL(project.codeURL)}
+                >
                   Code
                 </Button>
                 <Button
                   size="small"
                   color="primary"
-                  onClick={openURL("/")}
+                  onClick={() => openURL(project.LiveDemoURL)}
                 >
                   Live Demo
                 </Button>
